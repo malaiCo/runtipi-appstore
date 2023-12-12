@@ -40,7 +40,7 @@ services:
       # Main
       traefik.enable: true
       traefik.http.middlewares.odoo-web-redirect.redirectscheme.scheme: https
-      traefik.http.services.odoo.loadbalancer.server.port: 8017
+      traefik.http.services.odoo.loadbalancer.server.port: 8069
       # Web
       traefik.http.routers.odoo-insecure.rule: Host(`${APP_DOMAIN}`)
       traefik.http.routers.odoo-insecure.entrypoints: web
