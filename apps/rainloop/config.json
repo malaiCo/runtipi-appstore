@@ -1,0 +1,23 @@
+{
+  "$schema": "../schema.json",
+  "name": "RainLoop",
+  "available": true,
+  "port": 8210,
+  "exposable": true,
+  "id": "rainloop",
+  "description": "SIMPLE, MODERN & FAST WEB-BASED EMAIL CLIENT",
+  "tipi_version": 4,
+  "version": "1.17.0",
+  "categories": [
+    "utilities"
+  ],
+  "short_desc": "Simple Webmail",
+  "author": "support@rainloop.net",
+  "source": "https://github.com/lukevella/rallly",
+  "website": "https://www.rainloop.net",
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "form_fields": []
+}

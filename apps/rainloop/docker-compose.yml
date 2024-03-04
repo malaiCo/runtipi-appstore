@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  rainloop:
+    image: rainloop/rainloop
+    container_name: rainloop
+    restart: always
+    ports:
+      - ${APP_PORT}:80
+    volumes:
+      - ${APP_DATA_DIR}/rainloop-data:/var/www/html/data # Persists data between container restarts
+    networks:
+      - tipi_main_network
+    labels:
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.rainloop-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.ralrainlooplly.loadbalancer.server.port: 80
+      # Web
+      traefik.http.routers.rainloop-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.rainloop-insecure.entrypoints: web
+      traefik.http.routers.rainloop-insecure.service: rainloop
+      traefik.http.routers.rallly-insecure.middlewares: rainloop-web-redirect
+      # Websecure
+      traefik.http.routers.rainloop.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.rainloop.entrypoints: websecure
+      traefik.http.routers.rainloop.service: rainloop
+      traefik.http.routers.rainloop.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.rainloop-local-insecure.rule: Host(`rainloop.${LOCAL_DOMAIN}`)
+      traefik.http.routers.rainloop-local-insecure.entrypoints: web
+      traefik.http.routers.rainloop-local-insecure.service: rainloop
+      traefik.http.routers.rainloop-local-insecure.middlewares: rainloop-web-redirect
+      # Local domain secure
+      traefik.http.routers.rainloop-local.rule: Host(`rainloop.${LOCAL_DOMAIN}`)
+      traefik.http.routers.rainloop-local.entrypoints: websecure
+      traefik.http.routers.rainloop-local.service: rainloop
+      traefik.http.routers.rainloop-local.tls: true
