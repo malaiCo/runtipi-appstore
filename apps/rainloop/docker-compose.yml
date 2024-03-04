@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   rainloop:
-    image: rainloop/rainloop
+    image: radicand/rainloop
     container_name: rainloop
     restart: always
     ports:

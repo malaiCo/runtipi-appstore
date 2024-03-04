@@ -13,7 +13,7 @@
   ],
   "short_desc": "Simple Webmail",
   "author": "support@rainloop.net",
-  "source": "https://github.com/lukevella/rallly",
+  "source": "https://github.com/RainLoop/rainloop-webmail/tree/master",
   "website": "https://www.rainloop.net",
   "supported_architectures": [
     "amd64",
